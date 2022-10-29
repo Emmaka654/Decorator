@@ -1,6 +1,18 @@
-public class XMLReader implements IFileReader{
+public class XMLReader extends DataDecorator {
+
+    public XMLReader(IFile decoratedReader) {
+        super(decoratedReader);
+    }
+
     @Override
-    public void read() {
-        System.out.println("Read file xml");
+    public void write(String data) {
+        super.write(data);
+        System.out.println("Write " + data + " to file xml");
+    }
+
+    @Override
+    public String read() {
+        super.read();
+        return "Read file xml";
     }
 }
